@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+    <title>Validatieformulier</title>
+
+</head>
+
+<body>
+    <form method="POST" action="#">
+        <label for="voornaam">Voornaam:</label>
+        <input type="text" id="voornaam" name="voornaam" required>
+
+        <label for="naam">Naam:</label>
+        <input type="text" id="naam" name="naam" required>
+
+        <label for="gebruikersnaam">Gebruikersnaam:</label>
+        <input type="text" id="gebruikersnaam" name="gebruikersnaam" required>
+
+        <label for="adres">Adres:</label>
+        <input type="text" id="adres" name="adres" required>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="land">Land:</label>
+        <select id="land" name="land" required>
+            <option value="">Selecteer een land</option>
+            <option value="Nederland">Nederland</option>
+            <option value="België">België</option>
+            <option value="Duitsland">Duitsland</option>
+            <option value="Frankrijk">Frankrijk</option>
+        </select>
+
+        <label for="provincie">Provincie:</label>
+        <input type="text" id="provincie" name="provincie" required>
+
+        <input type="submit" value="Verzenden">
+
+
+
+        
+    </form>
+</body>
+
+</html>
