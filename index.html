@@ -1,52 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-
-    <title>Validatieformulier</title>
-
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <title>ValidatieForm</title>
 </head>
 
 <body>
-    <form method="POST" action="#">
-        <label for="voornaam">Voornaam:</label>
-        <input type="text" id="voornaam" name="voornaam" required>
-
-        <label for="naam">Naam:</label>
-        <input type="text" id="naam" name="naam" required>
-
-        <label for="gebruikersnaam">Gebruikersnaam:</label>
-        <input type="text" id="gebruikersnaam" name="gebruikersnaam" required>
-
-        <label for="adres">Adres:</label>
-        <input type="text" id="adres" name="adres" required>
-
-        <label for="email">E-mail:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="land">Land:</label>
-        <select id="land" name="land" required>
-            <option value="">Selecteer een land</option>
-            <option value="Nederland">Nederland</option>
-            <option value="België">België</option>
-            <option value="Duitsland">Duitsland</option>
-            <option value="Frankrijk">Frankrijk</option>
-        </select>
-
-        <label for="provincie">Provincie:</label>
-        <input type="text" id="provincie" name="provincie" required>
-
-        <input type="submit" value="Verzenden">
 
 
+    <div style="width: 50%; padding-left: 10%; float: left;">
+        <!--Form + validatie-->
 
-        
-    </form>
+        <h1>Aanmelden</h1>
+        <p style="font-size: 25px;">Meld je aan!</p>
+        <form class="row g-lg-3">
+
+            <div class="col-md-4">
+                <label for="Voornaam" class="form-label">Voornaam</label>
+                <input type="text" class="form-control" id="idVoornaam" placeholder="Uw voornaam">
+            </div>
+
+            <div class="col-md-4">
+                <label for="Naam" class="form-label">Naam</label>
+                <input type="text" class="form-control" id="idNaam" placeholder="Uw naam">
+            </div>
+
+            <div class="col-md-4">
+                <label for="Gebruikersnaam" class="form-label">Gebruikersnaam</label>
+                <div class="input-group">
+                    <div class="input-group-text">@</div>
+                    <input type="text" class="form-control" id="idGebruikersnaam" placeholder="r0885689">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="Email" class="form-label">E-mailadres</label>
+                <input type="email" class="form-control" id="idemail" placeholder="mail@voorbeeld.be">
+            </div>
+
+            <div class="col-md-4">
+                <label for="Wachtwoord" class="form-label">Wachtwoord</label>
+                <input type="password" class="form-control" id="idWachtwoord">
+                <div id="wachtwoordhelp" class="form-text">Je wachtwoord moet minstens 8 tekens lang zijn</div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="Herhaalwachtwoord" class="form-label">Herhaal wachtwoord</label>
+                <input type="password" class="form-control" id="idHerhaalwachtwoord">
+            </div>
+
+            <div class="col-6">
+                <label for="Adres" class="form-label">Adres</label>
+                <input type="text" class="form-control" id="idAdres" placeholder="Uw adres en huisnummer">
+            </div>
+
+            <div class="col-md-6">
+                <label for="Land" class="form-label">Land</label>
+                <select id="idLand" class="form-select">
+                    <option selected>Kies een Land</option>
+                    <option>België</option>
+                    <option>Nederland</option>
+                    <option>Duitsland</option>
+                    <option>Frankrijk</option>
+                    <option>Engeland</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="provincie" class="form-label">Provincie</label>
+                <select id="idprovincie" class="form-select">
+                    <option selected>Kies een provincie</option>
+                    <option>Antwerpen</option>
+                    <option>Oost-Vlaanderen</option>
+                    <option>Vlaams-Brabant</option>
+                    <option>West-Vlaanderen</option>
+                    <option>Luik</option>
+                    <option>Luxemburg</option>
+                    <option>Waals-Brabant</option>
+                </select>
+
+            </div>
+
+            <div class="col-md-4">
+                <label for="postcode" class="form-label">Postcode</label>
+                <input type="text" class="form-control" id="idpostcode">
+            </div>
+
+            <div style="height: 10px;"></div>
+            <hr>
+
+            <div style="float: left; width: 35%; padding-left: 5%;">
+                <h3>Hou me op de hoogte</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="nieuwsbrief" id="idnieuwsbrief">
+                    <label class="form-check-label" for="nieuwsbrief">
+                        Inschrijven voor onze nieuwsbrief
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="voorwaarden" id="idvoorwaarden">
+                    <label class="form-check-label" for="voorwaarden">
+                        Ik ga akkord met de algemene voorwaarden.
+                    </label>
+                </div>
+            </div>
+
+            <div style="width: 30%; padding-left: 15%;" id="idbetaling">
+                <h3>Betaling</h3>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="betaling" id="idapp" checked>
+                    <label class="form-check-label" for="app">
+                        Banking app
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="betaling" id="idoverschrijving">
+                    <label class="form-check-label" for="overschrijving">
+                        overschrijving
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="betaling" id="idvisa">
+                    <label class="form-check-label" for="visa">
+                        Visa Card
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="betaling" id="idpaypal">
+                    <label class="form-check-label" for="paypal">
+                        PayPal
+                    </label>
+                </div>
+            </div>
+            <hr>
+
+        </form>
+        <div style="height: 10px;"></div>
+    </div>
+
+
+    <div style="width: 30%; float: left; padding-left: 5%; padding-top: 10%; padding-right: 1%;">
+
+        <div class="alert alert-danger" role="alert" id="alertrood">
+            <h4>Yikes, errors...</h4>
+            <p id="rood"></p>
+        </div>
+
+        <div class="alert alert-success" role="alert" id="alertgroen">
+            <h4>Goed gedaan!</h4>
+            <p>Aww yeah, je werd geregistreerd.</p>
+        </div>
+
+        <div class="alert alert-info" role="alert" id="alertblauw">
+            <h4>Betalingswijze</h4>
+            <p id="blauw"></p>
+        </div>
+    </div>
+
 </body>
 
 </html>
