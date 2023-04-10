@@ -14,12 +14,16 @@
 
 
     <div style="width: 50%; padding-left: 10%; float: left;">
+        <!--styling van algemene div-->
         <!--Form + validatie-->
 
         <h1>Aanmelden</h1>
         <p style="font-size: 25px;">Meld je aan!</p>
         <form class="row g-lg-3">
+            <!--form breedte-->
+            <!--https://getbootstrap.com/docs/5.3/forms/form-control/-->
 
+            <!--Form velden aanmaken + juiste col aanpassen-->
             <div class="col-md-4">
                 <label for="Voornaam" class="form-label">Voornaam</label>
                 <input type="text" class="form-control" id="idVoornaam" placeholder="Uw voornaam">
@@ -34,13 +38,14 @@
                 <label for="Gebruikersnaam" class="form-label">Gebruikersnaam</label>
                 <div class="input-group">
                     <div class="input-group-text">@</div>
-                    <input type="text" class="form-control" id="idGebruikersnaam" placeholder="r0885689">
+                    <!--https://getbootstrap.com/docs/5.3/forms/input-group/ -->
+                    <input type="text" class="form-control" id="idGebruikersnaam" placeholder="r0878871">
                 </div>
             </div>
 
             <div class="col-md-4">
                 <label for="Email" class="form-label">E-mailadres</label>
-                <input type="email" class="form-control" id="idemail" placeholder="mail@voorbeeld.be">
+                <input type="email" class="form-control" id="idemail" placeholder="mail@example.be">
             </div>
 
             <div class="col-md-4">
@@ -58,30 +63,31 @@
                 <label for="Adres" class="form-label">Adres</label>
                 <input type="text" class="form-control" id="idAdres" placeholder="Uw adres en huisnummer">
             </div>
-
+            <!--https://getbootstrap.com/docs/5.3/forms/select/-->
             <div class="col-md-6">
                 <label for="Land" class="form-label">Land</label>
                 <select id="idLand" class="form-select">
                     <option selected>Kies een Land</option>
                     <option>België</option>
                     <option>Nederland</option>
-                    <option>Duitsland</option>
                     <option>Frankrijk</option>
+                    <option>Spanje</option>
                     <option>Engeland</option>
                 </select>
             </div>
-
+            <!--https://getbootstrap.com/docs/5.3/forms/select/-->
             <div class="col-md-6">
                 <label for="provincie" class="form-label">Provincie</label>
                 <select id="idprovincie" class="form-select">
                     <option selected>Kies een provincie</option>
                     <option>Antwerpen</option>
                     <option>Oost-Vlaanderen</option>
-                    <option>Vlaams-Brabant</option>
                     <option>West-Vlaanderen</option>
-                    <option>Luik</option>
-                    <option>Luxemburg</option>
+                    <option>Vlaams-Brabant</option>
                     <option>Waals-Brabant</option>
+                    <option>Luxemburg</option>
+                    <option>Henegouwen</option>
+
                 </select>
 
             </div>
@@ -93,13 +99,13 @@
 
             <div style="height: 10px;"></div>
             <hr>
-
+            <!--https://getbootstrap.com/docs/5.3/forms/checks-radios/-->
             <div style="float: left; width: 35%; padding-left: 5%;">
                 <h3>Hou me op de hoogte</h3>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="nieuwsbrief" id="idnieuwsbrief">
                     <label class="form-check-label" for="nieuwsbrief">
-                        Inschrijven voor onze nieuwsbrief
+                        Inschrijven voor onze nieuwsbrief.
                     </label>
                 </div>
                 <div class="form-check">
@@ -109,7 +115,7 @@
                     </label>
                 </div>
             </div>
-
+            <!--https://getbootstrap.com/docs/5.3/forms/checks-radios/-->
             <div style="width: 30%; padding-left: 15%;" id="idbetaling">
                 <h3>Betaling</h3>
                 <div class="form-check">
@@ -139,23 +145,31 @@
             </div>
             <hr>
 
+            <button type="submit" class="btn btn-primary" onclick="validateForm()">Submit</button>
+
         </form>
         <div style="height: 10px;"></div>
     </div>
 
+    <!--Aanmaken van alerts aan de zijkant-->
 
     <div style="width: 30%; float: left; padding-left: 5%; padding-top: 10%; padding-right: 1%;">
 
+        <!--https://getbootstrap.com/docs/5.3/components/alerts/-->
+
+        <!--Melding Met Fouten-->
         <div class="alert alert-danger" role="alert" id="alertrood">
             <h4>Yikes, errors...</h4>
             <p id="rood"></p>
         </div>
 
+        <!--Melding voor succes-->
         <div class="alert alert-success" role="alert" id="alertgroen">
             <h4>Goed gedaan!</h4>
             <p>Aww yeah, je werd geregistreerd.</p>
         </div>
 
+        <!--Melding voor het vertonen van de betaalwijze-->
         <div class="alert alert-info" role="alert" id="alertblauw">
             <h4>Betalingswijze</h4>
             <p id="blauw"></p>
@@ -163,5 +177,179 @@
     </div>
 
 </body>
+
+<script>
+    //Lege array waarin we alle meldingen bewaren
+    let error = [];
+
+    //elementen uit html naar java halen en verbergen 
+    document.getElementById('alertrood').style.visibility = "hidden";
+    document.getElementById('alertgroen').style.visibility = "hidden";
+    document.getElementById('alertblauw').style.visibility = "hidden";
+
+    //in deze functie controleren we alle velden of ze wel ingevuld zijn
+
+    //https://www.w3schools.com/js/js_validation.asp
+    //https://www.w3schools.com/jsref/met_document_getelementbyid.asp
+    function validateForm() {
+
+
+        // velden ophalen uit html code
+        let voornaam = document.getElementById('idVoornaam').value;
+        let naam = document.getElementById('idNaam').value;
+        let email = document.getElementById('idemail').value;
+        let gebruikersnaam = document.getElementById('idGebruikersnaam').value;
+        let adres = document.getElementById('idAdres').value;
+        let land = document.getElementById('idLand').value;
+        let provincie = document.getElementById('idprovincie').value;
+
+
+
+        //velden controleren of ze leeg zijn
+
+        //checkenptyfield met 2 parameters
+        checkEmptyField(voornaam, "Het veld voornaam is vereist");
+        checkEmptyField(naam, "Het veld naam is vereist");
+        checkEmptyField(gebruikersnaam, "Het veld gebruikersnaam is vereist");
+        checkEmptyField(adres, "Het veld adres is vereist");
+        checkEmptyField(land, "Het veld land vereist een keuze");
+        checkEmptyField(provincie, "Het veld provincie vereist een keuze");
+
+        //ALs het land niet gekozen wordt blijft het veld leeg
+        if (land = "Kies een land") {
+            land = null;
+        }
+
+        //als de provincie niet gekozen wordt blijft het veld leeg
+        if (provincie = "Kies een provincie") {
+            provincie = null;
+        }
+
+
+        //controleren van de  e-mail
+        let controlemail = validateEmail(email);
+        if (controlemail = false) { //boolean
+            error += "E-mailadres is niet correct.";
+        }
+
+
+        //controle wachtwoord
+        let wachtwoord = document.getElementById('idWachtwoord').value; //Id van html naar java halen
+        let herhaalwachtwoord = document.getElementById('idHerhaalwachtwoord').value; //Id van html naar java halen
+        let wachtwoordcontrole = checkEmptyField(wachtwoord,
+        "het wachtwoord is verplicht in te vullen"); //checken of het wachtwoordveld is ingevuld
+        let herhaalwachtwoordcontrole = checkEmptyField(herhaalwachtwoord,
+            "het herhaalde wachtwoord is verplicht in te vullen");
+
+        //Alle eisen waaraan het wachtwoord moet voldoen
+        if (wachtwoordcontrole = "") {
+            if (wachtwoordcontrole = herhaalwachtwoordcontrole) {
+                if (wachtwoord.lengt < 7) {
+                    error += "Het wachtwoord moet langer zijn dan 7 karakters";
+                } else if (wachtwoord != herhaalwachtwoord) {
+                    error += "Wachtwoord en het herhaalde wachtwoord moeten gelijk zijn";
+                }
+            }
+        }
+
+
+        //controleren van gebruikersnaam
+        checkGebruikersnaam(gebruikersnaam); //checkGebruikernaam Functie toepassen op het gebruikersnaam veld
+
+
+
+        //contole betalingswijze
+        let betalingswijze = document.getElementById('idbetaling').value; //html element in java inbrengen
+        validatePayment(betalingswijze); //validatiePayement fucntie toepassen op betalingswijze
+
+
+        //controle postcode
+        let postcode = document.getElementById('idpostcode').value;
+        let contorlePC = checkEmptyField(postcode,
+        "Het veld Postcode is vereist"); //Veld van postcode wordt gecontroleerd of het is ingevuld
+        checkPc(contorlePC); //checkPc Functie wordt toegepast op controlePc
+
+
+        //controle welke alerts moeten worden weergegeven
+        if (error.length =
+            0) { //Als de lengte van de array Error[] 0 is wordt een groene en een blauwe alert getoond die aanwijst dat alles correct is ingevuld en een betalingswijze is gekozen.
+            document.getElementById('alertgroen').style.visibility = "visible";
+            document.getElementById('alertblauw').style.visibility = "visible";
+        } else { //als de error array niet leeg is dan wordt er een foutmelding getoont met daarin alle fouten.
+            let i = 0;
+            let foutmelding;
+            while (i < error.length) {
+                foutmelding = error[i] + "\n";
+                i++;
+            }
+            document.getElementById('rood').innerHTML = foutmelding;
+            document.getElementById('alertrood').style.visibility = "visible";
+        }
+
+    }
+
+    //functie die wordt gebruikt om te checken of een veld leeg is
+    function checkEmptyField(veld, melding) {
+        if (veld == null) {
+            error += melding;
+        } else {
+            return "";
+        }
+    }
+
+    //Functie dat zegt of de email validatie klopt of niet
+    function validateEmail(emailadres) {
+        let validatie = checkDomain(emailadres);
+        if (validatie = true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Fucntie die gaat checken of een email klopt en de nodige info bevat.
+    function checkDomain(emailadres) {
+
+        let domein = string(emailadres);
+        const controle = domein.split('@');
+        let domeincontrole = controle[1];
+
+        //contoleren of eerste letter
+        let eersteletter = domeincontrole.substr(0, 1);
+        if (eersteletter.match("/[^a-z0-9]/")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //Functie die checkt of de eerste letter van de gebruikersnaam niet begint met een Punt of eens koppelteken
+    function checkGebruikersnaam(Gebruikersnaam) {
+        let eersteletter = Gebruikersnaam.substr(0, 1);
+        if (eersteletter = '.') {
+            error += "Een punt mag niet de eerste letter van de gebruikersnaam zijn";
+        } else if (eersteletter = '-') {
+            error += "Een koppelteken mag niet de eerste letter van de gebruikersnaam zijn";
+        }
+    }
+
+    //functie vult de p-tag binnen de blauwe alert op
+    function validatePayment(veld) {
+        document.getElementById('inhoudblauw').innerHTML = "Je betalingswijze is " + veld;
+    }
+
+    //fucntie die gaat de postcode gaat valideren
+    function checkPc(veld) {
+
+        if (veld = "") {
+            if (postcode <= 1000) {
+                error += "Postcode moet groter of gelijk zijn aan 1000";
+            } else if (postcode >= 10000) {
+                error += "De waarde van postcode moet tussen 1000 en 9999 liggen.";
+            }
+        }
+    }
+</script>
+
 
 </html>
